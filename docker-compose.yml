@@ -1,0 +1,16 @@
+version: "3.6"
+
+services:
+  research:
+    build: .
+    volumes:
+      - .:/opt/research
+      - /tmp/pulseaudio.socket:/tmp/pulseaudio.socket
+      - ./pulseaudio.client.conf:/etc/pulse/client.conf
+    working_dir: /opt/research
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      PULSE_SERVER: unix:/tmp/pulseaudio.socket
+      PULSE_COOKIE: /tmp/pulseaudio.cookie
+    tty: true
