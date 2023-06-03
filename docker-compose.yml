@@ -5,7 +5,10 @@ services:
     build: .
     volumes:
       - .:/opt/research
+      - /tmp/.X11-unix:/tmp/.X11-unix
     working_dir: /opt/research
     devices:
       - /dev/snd:/dev/snd
+    environment:
+      DISPLAY: unix$DISPLAY
     command: python main.py

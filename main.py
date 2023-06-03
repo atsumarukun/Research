@@ -1,6 +1,7 @@
 import wave
 import pyaudio
 import numpy as np
+from matplotlib import pyplot as plt
 
 OUTPUT_DEVICE_NAME = "HD-Audio Generic: ALC285 Analog (hw:1,0)"
 
@@ -24,6 +25,9 @@ elif sample_size == 4:
     format=pyaudio.paInt32
 
 data = np.frombuffer(stream, dtype=dtype)
+
+plt.plot(data)
+plt.show()
 
 p = pyaudio.PyAudio()
 output_device_index: int
