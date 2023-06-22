@@ -11,4 +11,4 @@ services:
       - /dev/snd:/dev/snd
     environment:
       DISPLAY: unix$DISPLAY
-    command: python main.py
+    command: python resize.py
