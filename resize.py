@@ -36,7 +36,7 @@ def get_files(path: str, files=[]) -> list:
             files.append(read_file(f"{path}/{file_}"))
     return files
 
-def get_max_size(files: Final[File]) -> int:
+def get_max_size(files: list) -> int:
     return max(list(map(lambda v: len(v["data"]), files)))
 
 def resize(file_: Final[File], size: int) -> Final[File]:
