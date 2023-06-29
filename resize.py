@@ -2,10 +2,9 @@ import os
 import wave
 import numpy as np
 from typing import Final
+from matplotlib import pyplot as plt
 
 from type.filetype import File
-
-from matplotlib import pyplot as plt
 
 CORPUS_PATH = "corpus/Acted/wav"
 
@@ -38,10 +37,7 @@ def get_files(path: str, files=[]) -> list:
     return files
 
 def get_max_size(files: Final[File]) -> int:
-    max_size = 0
-    for file_ in files:
-        max_size = max(max_size, len(file_["data"]))
-    return max_size
+    return max(list(map(lambda v: len(v["data"]), files)))
 
 def resize(file_: Final[File], size: int) -> Final[File]:
     file_["data"] = np.append(file_["data"], np.zeros(size - len(file_["data"]), "int16"))
